@@ -1,0 +1,14 @@
+<tr class="align-middle">
+    <td>
+        <span class="btn btn-danger" hx-delete="/categories/{{categoryID}}" hx-target="closest tr">
+            <i class="bi bi-trash3-fill"></i>
+        </span>
+        {{categoryID}}
+    </td>
+    <td>
+        <span class="btn btn-primary" hx-get="/categories/{{categoryID}}" hx-target="closest td">
+            <i class="bi bi-pencil"></i>
+        </span>
+        {{description}}
+    </td>
+</tr>

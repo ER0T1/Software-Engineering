@@ -1,0 +1,9 @@
+<tr>
+    <th>First Name</th>
+    <td>
+        <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field={{editDataName}}" hx-target="closest td">
+            <i class="bi bi-pencil"></i>
+        </span>
+        {{editData}}
+    </td>
+</tr>

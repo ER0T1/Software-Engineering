@@ -1,0 +1,50 @@
+<h2>User Information</h2>
+<ul>
+    <li>User ID: {{userID}} </li>
+</ul>
+<table class="table table-striped table-sm">
+    <tbody>
+        <tr>
+            <th>First Name</th>
+            <td>
+                <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=firstName" hx-target="closest td">
+                    <i class="bi bi-pencil"></i>
+                </span>
+                {{firstName}}
+            </td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>
+                <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=lastName" hx-target="closest td">
+                    <i class="bi bi-pencil"></i>
+                </span>
+                {{lastName}}
+            </td>
+        </tr>
+        <tr>
+            <th>E-Mail</th>
+
+            <td>
+                <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=email" hx-target="closest td">
+                    <i class="bi bi-pencil"></i>
+                </span>
+                {{email}}
+            </td>
+        </tr>
+        <tr>
+            <th>Password</th>
+
+            <td>
+                <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=password" hx-target="closest td">
+                    <i class="bi bi-pencil"></i>
+                </span>
+                {{password}}
+            </td>
+        </tr>
+        <tr>
+            <th>Created Time</th>
+            <td>{{created_at}}</td>
+        </tr>
+    </tbody>
+</table>

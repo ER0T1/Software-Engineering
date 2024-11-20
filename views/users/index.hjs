@@ -1,0 +1,30 @@
+<h2> Users </h2>
+<table class="table table-striped table-hover table-sm">
+    <thead>
+        <tr>
+            <th> User ID </th>
+            <th> Name </th>
+            <th> E-Mail </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#data}}
+        {{> row}}
+        {{/data}}
+        <tr>
+            <td colspan='5' class="text-center">
+                <form hx-post="/users" hx-target="closest tr" hx-swap="beforebegin">
+                    <input type="text" name="firstName" placeholder="FirstName" required>
+                    <input type="text" name="lastName" placeholder="LastName" required>
+                    <input type="text" name="email" placeholder="E-Mail" required>
+                    <input type="text" name="password" placeholder="Password" required>
+                    <button class='btn btn-success'>
+                        <i class="bi bi-plus-circle-fill"></i>
+                        Add
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>

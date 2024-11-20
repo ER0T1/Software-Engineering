@@ -1,0 +1,34 @@
+<form hx-put="/users/detail/{{userID}}" hx-target="closest tr" hx-swap="outerHTML">
+
+    {{#firstName}}
+    <label for="firstName"></label>
+    <input type="text" name="firstName" value="{{firstName}}" required>
+    {{/firstName}}
+
+    {{#lastName}}
+    <label for="lastName"></label>
+    <input type="text" name="lastName" value="{{lastName}}" required>
+    {{/lastName}}
+
+    {{#email}}
+    <label for="email"></label>
+    <input type="text" name="email" value="{{email}}" required>
+    {{/email}}
+
+    {{#password}}
+    <label for="password"></label>
+    <input type="text" name="password" value="{{password}}" required>
+    {{/password}}
+
+    {{#created_at}}
+    <label for="created_at"></label>
+    <input type="text" name="created_at" value="{{created_at}}" required>
+    {{/created_at}}
+
+    <button type="submit" class="btn btn-success" title="Update" name="action" value="update">
+        <i class="bi bi-check-lg"></i>
+    </button>
+    <button type="submit" class="btn btn-warning" title="Cancel" name="action" value="cancel">
+        <i class="bi bi-x-lg"></i>
+    </button>
+</form>

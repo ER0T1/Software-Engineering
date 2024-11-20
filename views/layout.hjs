@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  {{!-- 設定網頁顯示比例，對於行動裝置來說是必要的 --}}
+    <title> {{title}} </title>                                              {{!-- 網頁標題 --}}
+    <script src="/htmx.min.js"></script>                                    {{!-- HTMX JavaScript 函式庫 --}}
+    <script src="/response-targets.js"></script>                            {{!-- response-targets.js HTMX 擴充庫 --}}
+    <link rel="stylesheet" href="/bootstrap.min.css">                       {{!-- Bootstrap CSS 樣式庫 --}}
+    <link rel="stylesheet" href="/bootstrap-icons.min.css">                 {{!-- Bootstrap Icons 圖示庫 --}}
+    <script src="/bootstrap.min.js"></script>                               {{!-- Bootstrap JavaScript 函式庫 --}}
+    {{!--  Bootstrap-icons.woff2 --}}                                       {{!-- 網頁圖示字型檔案 --}}
+</head>
+
+<body class="container">                                                    {{!-- 網頁內容，class="container" 是 Bootstrap 提供的基本建構塊 --}}
+    <header class="text-center">                                            {{!-- 網頁標題，class="text-center" 是 Bootstrap 提供的文字置中 --}}
+        <h1> Construction Vechicles & Services Platform </h1>
+    </header>
+    {{> navbar}}                                                            {{!-- 一個 navbar（導覽列），連結到系統的各種功能。點擊某個功能，main#main 顯示該功能的使用者介面。 --}}
+    <div id="toast"></div>                                                  {{!--用於顯示來自後端資訊的區塊 --}}
+    <main id="main" hx-ext="response-targets" hx-target-error="#toast" {{#where}}  hx-trigger="load" hx-get="{{where}}" {{/where}}>
+        {{flash}}
+        <div class="text-center">
+            <i class="bi bi-layout-wtf" style="font-size: 50vh;"></i>
+        </div>
+    </main>
+    <footer class="text-center">
+        <p>&copy; 2024 Facilitates Buying/Selling/Renting New Or Used Construction Vechicles & Services Online Service
+            Platform</p>
+    </footer>
+    <script>
+        // 監聽 toast 區塊的 htmx:afterSwap 事件，當錯誤訊息顯示在 div#toast 中時：
+        // 1. 瀏覽器會滾動到頂部以便可以看到錯誤訊息。
+        // 2. 瀏覽器會在 10 秒後將其淡出。
+        document.querySelector('#toast').addEventListener('htmx:afterSwap', function (event) {
+            const elem = this;
+            elem.style.opacity = 1.0;
+            setTimeout(function () {
+                elem.style.opacity = 0.0;
+                elem.style.transition = 'opacity 1s ease-out';
+            }, 10000);
+            elem.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+        });
+    </script>
+</body>
+
+</html>
