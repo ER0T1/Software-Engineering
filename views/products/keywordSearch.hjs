@@ -1,0 +1,5 @@
+{{!-- This is currently wrong. --}}
+<form hx-get="/products/keywordSearch" hx-target="#products">
+    <input class="form-control" type="text" placeholder="Enter keyword" name="keyword" hx-trigger="keyup delay:400ms">
+</form>
+<div id="products"></div>

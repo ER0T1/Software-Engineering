@@ -13,6 +13,7 @@ function doSQL(SQL, parms, res, callback) {
     });
 }
 
+// 使用資料庫連接來查詢準備好的 DBMS 並透過替換 app.get(‘/’, ... ) 路由的內容來顯示結果。
 app.get('/', function (req, res) {
     let SQL = "SELECT categoryID, description FROM Categories ORDER BY description";
     doSQL(SQL, [], res, function (data) {
@@ -22,8 +23,8 @@ app.get('/', function (req, res) {
         });
     });
 });
-// 使用資料庫連接來查詢準備好的 DBMS 並透過替換 app.get(‘/’, ... ) 路由的內容來顯示結果。
 
+// 插入新的 category 資料
 app.post("/", function (req, res) {
     let SQL = "INSERT INTO Categories (description) VALUES (?)";
     doSQL(SQL, [req.body.description], res, function (data) {
@@ -33,16 +34,16 @@ app.post("/", function (req, res) {
         });
     });
 });
-// 插入新的 category 資料
 
+// 刪除 category 資料
 app.delete("/:categoryID", function (req, res) {
     let SQL = "DELETE FROM Categories WHERE categoryID = ?";
     doSQL(SQL, [req.params.categoryID], res, function (data) {
         res.send("");
     });
 });
-// 刪除 category 資料
 
+// 獲取 category 資料，並進入編輯模式
 app.get("/:categoryID", function (req, res) {
     let SQL = "SELECT description FROM Categories WHERE categoryID = ?";
     doSQL(SQL, [req.params.categoryID], res, function (data) {
@@ -52,8 +53,8 @@ app.get("/:categoryID", function (req, res) {
         });
     });
 });
-// 獲取 category 資料
 
+// 更新 category 資料
 app.put("/:categoryID", function (req, res) {
     let showRow = function() {
         let SQL = "SELECT categoryID, description FROM Categories WHERE categoryID = ?";
@@ -76,6 +77,5 @@ app.put("/:categoryID", function (req, res) {
         showRow();
     }
 });
-// 更新 category 資料
 
 module.exports = app;

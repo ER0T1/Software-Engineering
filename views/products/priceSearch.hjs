@@ -1,0 +1,7 @@
+{{!-- This is currently wrong. --}}
+<form hx-get="/products/priceSearch" hx-target="#products">
+    <input class="form-control" type="number" placeholder="Min price" name="minPrice">
+    <input class="form-control" type="number" placeholder="Max price" name="maxPrice">
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<div id="products"></div>

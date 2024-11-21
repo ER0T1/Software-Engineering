@@ -1,0 +1,12 @@
+<h2> Products </h2>
+<form class="form" hx-get="/products/searchResult" hx-target="#products">
+    <select class="form-select" name="categoryID">
+        <option value="">--- Select a product category ---</option>
+        {{#categories}}
+        <option value="{{categoryID}}">{{description}}</option>
+        {{/categories}}
+    </select>
+    <input class="form-control" type="text" placeholder="Keyword to Search" name="keyword">
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<div id="products"></div>

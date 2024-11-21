@@ -1,0 +1,23 @@
+<tr>
+    <td rowspan="3" class="align-middle">
+        <a class="btn btn-danger" href="/products/delete/{{productID}}">
+            <i class="bi bi-trash"></i>
+        </a>
+        <a class="btn btn-primary" href="/products/update/{{productID}}">
+            <i class="bi bi-pencil"></i>
+        </a>
+        <a class="btn btn-info" href="/products/detail/{{productID}}">
+            <i class="bi bi-arrow-right"></i>
+        </a>
+        {{transactionID}}
+    </td>
+    <th colspan="2">{{title}}</th>
+</tr>
+<tr>
+    <td> Seller: {{firstName}} {{lastName}}</td>
+    <td> E-Mail: {{email}}</td>
+</tr>
+<tr>
+    <td> Payment: {{payment}} </td>
+    <td> Price: {{price}} $USD </td>
+</tr>

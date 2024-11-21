@@ -77,6 +77,10 @@ const categories = require("./routes/categories");
 categories.connection = connection;
 app.use("/categories", categories);
 
+const products = require("./routes/products");
+products.connection = connection;
+app.use("/products", products);
+
 app.listen(80, function () {
     console.log(
         "Web server listening on port 80!\n" +
