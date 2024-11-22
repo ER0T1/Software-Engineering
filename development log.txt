@@ -1,0 +1,83 @@
+24.11.21
+    現在有兩個功能:
+    ．Users
+        ．在「Users」中可以列出所有的使用者，並且可以添加新的使用者。
+        ．點擊每一列最後的箭頭按鈕，可以將使用者的詳細資訊打印出來，並且可以修改。
+    ．Categories
+        ．可以顯示產品所有的類別，並且可以新增、修改與刪除。
+
+    Now there are two functions:
+    ． Users
+        ． All users can be listed in "Users" and new users can be added.
+        ． Click the arrow button at the end of each column to print out the user's detailed information and modify it.
+    ． Categories
+        ． All product categories can be displayed, and can be added, modified and deleted.
+
+24.11.21.2
+    上傳DATABASE與表格關係。
+
+    Upload DATABASE and table relationship.
+
+24.11.22
+    修改與新增了以下功能:
+    ．Users:
+        ．在表格中每一頁只顯示100筆數據，並且可以透過「Previous」與「Next」兩個按鈕來切換頁數。
+        ．在表格中新增一個「Search」功能，當使用者輸入關鍵字後，可以透過「firstName」或「lastName」來搜尋使用者。
+
+    ．Products:
+        ．新增四種方法來搜尋商品:
+            ．透過「category」與「title」(title 可以為空)來搜尋商品。
+            ．透過「seller name」來搜尋商品。
+            ．透過「title」來搜尋商品。[未完成]
+            ．透過「price」來搜尋商品。[未完成]
+        ．在表格中每一頁只顯示25筆數據，並且可以透過「Previous」與「Next」兩個按鈕來切換頁數。
+        ．點擊商品前方的箭頭圖示，可以查看商品的詳細資訊。[未完成]
+            ．商品的詳細資訊包含「Transaction ID」、「Product Name (title)」、「Category Name (description)」、「location」、「country」、「payment」、「price」和「ratings」。
+
+    The following functions have been modified and added:
+    ． Users:
+        ． Only 100 pieces of data are displayed on each page in the table, and the number of pages can be switched through the two buttons "Previous" and "Next".
+        ． Add a "Search" function to the form. After the user enters the keyword, the user can be searched by "firstName" or "lastName".
+
+    ． Products:
+        ． Four new methods have been added to search for products:
+            ． Search for products by "category" and "title" (title can be empty).
+            ． Search for products by "seller name".
+            ． Search for products by "title". [Undone]
+            ． Search for products by "price". [Undone]
+        ． Only 25 pieces of data are displayed on each page in the table, and the number of pages can be switched through the two buttons "Previous" and "Next".
+        ． Click the arrow icon in front of the product to view detailed information about the product. [Undone]
+        ． The detailed information of the product includes "Transaction ID", "Product Name (title)", "Category Name (description)", "location", "country", "payment", "price" and "ratings".
+
+24.11.23
+    修改與新增了以下功能:
+    ．Products:
+        ．完成四種方法來搜尋商品。(透過「seller name」來搜尋商品似乎出了一點問題)
+        ．點擊商品前方的垃圾桶圖示，可以刪除商品。
+        ．點擊商品前方的鉛筆圖示，可以修改商品的詳細資訊。
+            ．修改商品的詳細資訊包含「Product Name (title)」、「Category Name (description)」、「condition」、「location」、「country」、「payment」、「price」。
+        ．點擊商品前方的箭頭圖示，可以查看商品的詳細資訊。
+            ．商品的詳細資訊包含「Product Name (title)」、「Transaction ID」、「Category Name (description)」、「condition」、「Seller Name」、「E-Mail」、「location」、「country」、「payment」、「price」和「ratings」(如果有 ratings 的話)。
+            ．若商品的 buyerID 與 cookie 中的 userID 相同，則可以對商品進行評分。
+            ．新增「Buy」按鈕與「Rent」按鈕，可以對商品進行購買或租借。[功能未完成]
+
+    ．Login:
+        ．新增「Login」按鈕，可以登入使用者。
+        ．新增「Logout」按鈕，可以登出使用者。
+        ．新增「Register」按鈕，可以註冊使用者。
+
+    The following functions have been modified and added:
+    ． Products:
+        ． Four methods to search for products have been completed. (There seems to be a problem with searching for products by "seller name")
+        ． Click the trash icon in front of the product to delete the product.
+        ． Click the pencil icon in front of the product to modify the detailed information of the product.
+            ． The detailed information of the product to be modified includes "Product Name (title)", "Category Name (description)", "condition", "location", "country", "payment", "price".
+        ． Click the arrow icon in front of the product to view detailed information about the product.
+            ． The detailed information of the product includes "Product Name (title)", "Transaction ID", "Category Name (description)", "condition", "Seller Name", "E-Mail", "location", "country", "payment", "price" and "ratings" (if there are ratings).
+            ． If the buyerID of the product is the same as the userID in the cookie, you can rate the product.
+            ． Add "Buy" button and "Rent" button, you can purchase or rent the product. [Function not completed]
+
+    ． Login:
+        ． Add "Login" button, you can log in as a user.
+        ． Add "Logout" button, you can log out as a user.
+        ． Add "Register" button, you can register as a user.

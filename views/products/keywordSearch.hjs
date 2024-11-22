@@ -1,5 +1,6 @@
-{{!-- This is currently wrong. --}}
-<form hx-get="/products/keywordSearch" hx-target="#products">
-    <input class="form-control" type="text" placeholder="Enter keyword" name="keyword" hx-trigger="keyup delay:400ms">
+<h2> Products </h2>
+<form class="form" hx-get="/products/searchResult" hx-target="#products">
+    <input class="form-control" type="text" placeholder="Keyword to Search" name="keyword">
+    <button class="btn btn-primary" type="submit">Search</button>
 </form>
 <div id="products"></div>

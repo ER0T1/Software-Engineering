@@ -16,8 +16,11 @@
     <ul class="pagination">
         {{#prevPage}}
         <li class="page-item">
-            <a class="page-link" hx-get="/products/transactions?ownerName={{ownerName}}&productID={{productID}}&page={{prevPage}}" hx-boost="true"
-                hx-target="#products">Previous</a>
+            <a class="page-link"
+                hx-get="/products/transactions?ownerName={{ownerName}}&productID={{productID}}&maxPrice={{maxPrice}}&minPrice={{minPrice}}&page={{prevPage}}"
+                hx-boost="true" hx-target="#products">
+                Previous
+            </a>
         </li>
         {{/prevPage}}
         <li class="page-item">
@@ -25,8 +28,11 @@
         </li>
         {{#nextPage}}
         <li class="page-item">
-            <a class="page-link" hx-get="/products/transactions?ownerName={{ownerName}}&productID={{productID}}&page={{nextPage}}" hx-boost="true"
-                hx-target="#products">Next</a>
+            <a class="page-link"
+                hx-get="/products/transactions?ownerName={{ownerName}}&productID={{productID}}&maxPrice={{maxPrice}}&minPrice={{minPrice}}&page={{nextPage}}"
+                hx-boost="true" hx-target="#products">
+                Next
+            </a>
         </li>
         {{/nextPage}}
     </ul>

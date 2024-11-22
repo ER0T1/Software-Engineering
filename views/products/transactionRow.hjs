@@ -1,12 +1,14 @@
 <tr>
     <td rowspan="3" class="align-middle">
-        <a class="btn btn-danger" href="/products/delete/{{productID}}">
+        {{#editable}}
+        <a class="btn btn-danger" hx-delete="/products/delete/{{transactionID}}" hx-target="#main">
             <i class="bi bi-trash"></i>
         </a>
-        <a class="btn btn-primary" href="/products/update/{{productID}}">
+        <a class="btn btn-primary" hx-get="/products/edit/{{transactionID}}" hx-target="#main">
             <i class="bi bi-pencil"></i>
         </a>
-        <a class="btn btn-info" href="/products/detail/{{productID}}">
+        {{/editable}}
+        <a class="btn btn-info" hx-get="/products/detail/{{transactionID}}" hx-target="#main">
             <i class="bi bi-arrow-right"></i>
         </a>
         {{transactionID}}

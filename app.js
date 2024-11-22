@@ -1,3 +1,29 @@
+/* -----------------------------------------------------------------------------------------------------------------
+
+In this assignment, we will build our long-waited(?) 3-tier application (client-server architecture)using Web 
+technology that you have learned (express, htmx, bootstrap, mysql, etc.). You’rerequired to develop the application 
+with at least the following functions: 
+    • Add/change/remove a vehicle (for sale) information in the database. 
+    • Add/change/remove a user in the system (for admins.). [Done]
+    • Add/change/remove a service advertisement (e.g. driver) in the system. 
+    • Search for vehicles in the system. 
+        • By using at least four different methods (e.g. by type, by owner, by price, by keywords inthe 
+          description, ...) 
+• The application should also have two extra functions not in the previous list, and are in the highpriority 
+  requirements you designed. 
+• It is recommended to learn how to use Git to collaborate on software projects.
+
+在本次作業中，我們將使用你所學的網頁技術（express、htmx、bootstrap、mysql 等）來建立期待已久的（？）3 層應用程式（客戶端
+-伺服器架構）。你需要開發的應用程式至少具有以下功能：
+    • 在資料庫中新增/變更/刪除車輛（待售）資訊。
+    • 新增/更改/刪除系統中的使用者（針對管理員）。[已完成]
+    • 在系統中新增/更改/刪除服務廣告（例如駕駛）。
+    • 在系統中搜尋車輛。
+        • 使用至少四種不同的方法（例如按類型、按所有者、按價格、按描述中的關鍵字...）
+• 應用程式還應該具有前面清單中沒有的兩個額外功能，並且屬於您設計的高優先級要求。
+• 建議學習如何使用 Git 協同開發軟體專案。
+
+----------------------------------------------------------------------------------------------------------------- */
 const express = require('express');                 // Import express 框架
 const db = require('mysql2');                       // Import mysql2 資料庫連接
 const cookieParser = require('cookie-parser');      // Import cookie-parser 模組
@@ -38,6 +64,10 @@ app.get('/', (req, res) => {
     else {
         res.render('layout', {
             title: 'Construction Vechicles & Services',
+            loggedIn: req.signedCookies.loggedIn === 'true',
+            admin: req.signedCookies.admin === 'true',
+            userID: req.signedCookies.userID,
+            flash: req.signedCookies.flash,
             partials: {
                 navbar: 'navbar',
             }
@@ -80,6 +110,10 @@ app.use("/categories", categories);
 const products = require("./routes/products");
 products.connection = connection;
 app.use("/products", products);
+
+const login = require('./routes/login');
+login.connection = connection;
+app.use('/login', login);
 
 app.listen(80, function () {
     console.log(
