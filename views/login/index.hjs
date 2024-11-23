@@ -1,7 +1,7 @@
 <h1>Login</h1>
 {{flashMessage}}
 <form action="/login" method="post">
-    <input type="text" name="username" placeholder="Enter your E-Mail">
+    <input type="email" name="username" placeholder="Enter your E-Mail">
     <input type="password" name="password" placeholder="Enter your Password">
     <button type="submit">Login</button>
 </form>

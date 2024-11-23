@@ -1,0 +1,36 @@
+{{#buy}}
+<h2> Buy </h2>
+{{/buy}}
+{{#rent}}
+<h2> Rent </h2>
+{{/rent}}
+<form class="form" hx-post="/products/buy/{{transactionID}}" hx-target="#main">
+    <ul>
+        <li> Transaction ID: {{transactionID}} </li>
+        <li> Product Name: {{title}} </li>
+        <li> Category: {{description}} </li>
+        <li> Condition: {{condition}} </li>
+        <li> Seller Name: {{seller}} </li>
+        <li> E-Mail: {{email}} </li>
+        <li> Location: {{location}} </li>
+        <li> Country: {{country}} </li>
+        <li> Payment: {{payment}} </li>
+        <li> Price: {{price}} $USD </li>
+    </ul>
+    <div>
+        <input 
+            class="checkbox" 
+            type="checkbox" 
+            id="needDriver" 
+            name="needDriver" 
+            hx-get="/products/drivers?transactionID={{transactionID}}" 
+            hx-target="#driverDropdown" 
+            hx-swap="innerHTML">
+        <label for="needDriver">Need a driver</label>
+    </div>
+    <div id="driverDropdown"></div>
+    <button type="submit" class="btn btn-primary">
+        {{#buy}}Buy{{/buy}}
+        {{#rent}}Rent{{/rent}}
+    </button>
+</form>

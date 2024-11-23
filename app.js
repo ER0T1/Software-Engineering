@@ -6,7 +6,7 @@ with at least the following functions:
     • Add/change/remove a vehicle (for sale) information in the database. 
     • Add/change/remove a user in the system (for admins.). [Done]
     • Add/change/remove a service advertisement (e.g. driver) in the system. 
-    • Search for vehicles in the system. 
+    • Search for vehicles in the system. [Done]
         • By using at least four different methods (e.g. by type, by owner, by price, by keywords inthe 
           description, ...) 
 • The application should also have two extra functions not in the previous list, and are in the highpriority 
@@ -18,7 +18,7 @@ with at least the following functions:
     • 在資料庫中新增/變更/刪除車輛（待售）資訊。
     • 新增/更改/刪除系統中的使用者（針對管理員）。[已完成]
     • 在系統中新增/更改/刪除服務廣告（例如駕駛）。
-    • 在系統中搜尋車輛。
+    • 在系統中搜尋車輛。[已完成]
         • 使用至少四種不同的方法（例如按類型、按所有者、按價格、按描述中的關鍵字...）
 • 應用程式還應該具有前面清單中沒有的兩個額外功能，並且屬於您設計的高優先級要求。
 • 建議學習如何使用 Git 協同開發軟體專案。

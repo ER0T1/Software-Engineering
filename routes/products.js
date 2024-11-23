@@ -48,6 +48,7 @@ app.get("/searchResult", function (req, res) {
     const offset = (page - 1) * limit;
     const categoryID = req.query.categoryID || null;
     const keyword = "%" + (req.query.keyword || "") + "%";
+    const productIsOpenOnly = req.query.productIsOpenOnly || false;
     let parms = [];
 
     let SQL = "SELECT productID, title, price FROM Products WHERE ";
@@ -72,6 +73,7 @@ app.get("/searchResult", function (req, res) {
             prevPage: page > 1 ? page - 1 : null,
             nextPage: data.length === limit ? page + 1 : null,
             keyword: req.query.keyword || "",
+            productIsOpenOnly: productIsOpenOnly,
             partials: { row: 'products/row' },
         });
     });
@@ -85,6 +87,8 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
     const ownerName = "%" + (req.query.ownerName || "") + "%";
     const maxPrice = req.query.maxPrice || null;
     const minPrice = req.query.minPrice || null;
+    const keyword = "%" + (req.query.keyword || "") + "%";
+    const productIsOpenOnly = req.query.productIsOpenOnly || false;
     let parms = [];
 
     let SQL = `
@@ -102,19 +106,16 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
         WHERE 
     `;
 
+    if (productIsOpenOnly === "true") {
+        SQL += "t.status = 'open' ";
+    }
+    else {
+        SQL += "(t.status = 'open' OR t.status = 'close') ";
+    }
+
     if (productID !== null) {
-        SQL += (parms.length > 0 ? "AND " : "") + "p.productID = ? ";
+        SQL += "AND p.productID = ? ";
         parms.push(productID);
-    }
-
-    if (maxPrice !== null) {
-        SQL += "AND t.price <= ? ";
-        parms.push(maxPrice.toString());
-    }
-
-    if (minPrice !== null) {
-        SQL += "AND t.price >= ? ";
-        parms.push(minPrice.toString());
     }
 
     const buildQueryWithOwnerFilter = (callback) => {
@@ -139,6 +140,16 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
 
     buildQueryWithOwnerFilter(() => {
 
+        if (maxPrice !== null) {
+            SQL += "AND t.price <= ? ";
+            parms.push(maxPrice.toString());
+        }
+    
+        if (minPrice !== null) {
+            SQL += "AND t.price >= ? ";
+            parms.push(minPrice.toString());
+        }
+
         SQL += "LIMIT ? OFFSET ?";
         parms.push(limit.toString(), offset.toString());
 
@@ -149,10 +160,10 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
                 page: page,
                 prevPage: page > 1 ? page - 1 : null,
                 nextPage: data.length === limit ? page + 1 : null,
-                ownerName: req.query.ownerName || "",
-                productID: req.query.productID || "",
-                maxPrice: req.query.maxPrice || "",
-                minPrice: req.query.minPrice || "",
+                ownerName: req.query.ownerName || null,
+                productID: req.query.productID  || null,
+                maxPrice: req.query.maxPrice || null,
+                minPrice: req.query.minPrice || null,
                 partials: { transactionRow: 'products/transactionRow' },
             });
         });
@@ -222,13 +233,13 @@ app.post("/transactionEdit/:transactionID", function (req, res) {
 
     let SQL = `
         UPDATE Products 
-        SET title = ?, categoryID = ?, \`condition\` = ?, location = ?, country = ?, payment = ?, price = ?
+        SET title = ?, categoryID = ?, \`condition\` = ?, location = ?, country = ?, payment = ?
         WHERE productID = (SELECT productID FROM Transactions WHERE transactionID = ?)
     `;
     
     let SQL2 = "UPDATE Transactions SET price = ? WHERE transactionID = ?";
 
-    let parms = [title, categoryID, condition, location, country, payment, price, transactionID];
+    let parms = [title, categoryID, condition, location, country, payment, transactionID];
     doSQL(SQL, parms, res, function () {
         doSQL(SQL2, [price, transactionID], res, function () {
             res.redirect(`/products/detail/${transactionID}`);
@@ -308,6 +319,123 @@ app.post("/rate/:transactionID", function (req, res) {
             });
         });
     });
+});
+
+app.get('/buy/:transactionID', function (req, res) {
+    const { transactionID } = req.params;
+
+    const SQL = `
+        SELECT 
+            t.transactionID, p.title, c.description, u.firstName, u.lastName, u.email,
+            p.condition, p.location, p.country, p.payment, t.price, t.status, t.sellerID, t.buyerID
+        FROM 
+            Transactions t
+        JOIN 
+            Products p ON t.productID = p.productID
+        JOIN 
+            Categories c ON p.categoryID = c.categoryID
+        JOIN 
+            Users u ON t.sellerID = u.userID
+        WHERE 
+            t.transactionID = ?
+    `;
+
+    doSQL(SQL, [transactionID], res, function (data) {
+        res.render('products/buyConfirmation', {
+            [req.query.consume]: req.query.consume,
+            transactionID: data[0].transactionID,
+            title: data[0].title,
+            description: data[0].description,
+            condition: data[0].condition,
+            seller: data[0].firstName + " " + data[0].lastName,
+            email: data[0].email,
+            location: data[0].location,
+            country: data[0].country,
+            payment: data[0].payment,
+            price: data[0].price,
+        });
+    });
+});
+
+app.get('/drivers', function (req, res) {
+    const transactionID = req.query.transactionID;
+
+    if (!transactionID) {
+        return res.status(400).send('Transaction ID is required');
+    }
+
+    let categorySQL = `
+        SELECT Products.categoryID 
+        FROM Transactions 
+        JOIN Products ON Transactions.productID = Products.productID 
+        WHERE Transactions.transactionID = ?
+    `;
+
+    doSQL(categorySQL, [transactionID], res, function (categoryData) {
+        if (categoryData.length === 0) {
+            return res.status(404).send('Transaction or category not found');
+        }
+
+        const categoryID = categoryData[0].categoryID;
+
+        let driversSQL = `
+            SELECT Users.userID, Users.firstName, Users.lastName 
+            FROM Users 
+            WHERE Users.driver = ?
+        `;
+
+        doSQL(driversSQL, [categoryID], res, function (driverData) {
+            if (driverData.length > 0) {
+                const options = driverData.map(driver => 
+                    `<option value="${driver.userID}">${driver.firstName} ${driver.lastName}</option>`
+                ).join('');
+                
+                res.send(`
+                    <div class="form-group">
+                        <label for="driver">Select Driver</label>
+                        <select class="form-control" id="driver" name="driver" required>
+                            ${options}
+                        </select>
+                    </div>
+                `);
+            } else {
+                res.send('<p>No drivers available for this category</p>');
+            }
+        });
+    });
+});
+
+app.post('/buy/:transactionID', function (req, res) {
+    const { transactionID } = req.params;
+    const buyerID  = req.signedCookies.userID;
+    const { needDriver, driver } = req.body;
+
+    if (!driver) {
+        driver = null;
+    }
+
+    let SQL = `
+        UPDATE Transactions 
+        SET buyerID = ?, driverID = ?, status = 'close' 
+        WHERE transactionID = ?
+    `;
+    let SQL2 = "SELECT driverID FROM Drivers WHERE userID = ?";
+
+    let transaction = function (driverID) {
+        let parms = [buyerID, driverID, transactionID];
+        doSQL(SQL, parms, res, function () {
+            res.redirect(`/products/detail/${transactionID}`);
+        });
+    };
+
+    if (needDriver) {
+        doSQL(SQL2, [driver], res, function (data) {
+            transaction(data[0].driverID);
+        });
+    }
+    else {
+        transaction(null);
+    }
 });
 
 module.exports = app;

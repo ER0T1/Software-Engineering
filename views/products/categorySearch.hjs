@@ -7,6 +7,10 @@
         {{/categories}}
     </select>
     <input class="form-control" type="text" placeholder="Keyword to Search" name="keyword">
+    <div>
+        <input class="checkbox" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
+        <lable for="productIsOpenOnly">Only show open products</lable>
+    </div>
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
 <div id="products"></div>

@@ -81,3 +81,30 @@
         ． Add "Login" button, you can log in as a user.
         ． Add "Logout" button, you can log out as a user.
         ． Add "Register" button, you can register as a user.
+
+24.11.24
+    修改與新增了以下功能:
+    ．Products:
+        ．修復了透過「seller name」來搜尋商品的問題。
+        ．搜尋時可以篩選掉已經被賣出的商品。
+        ．為「Buy」按鈕與「Rent」按鈕新增了功能。
+            ．當使用者點擊「Buy」按鈕時，會跳轉到「Buy」頁面，並且顯示商品的詳細資訊。
+            ．當使用者點擊「Rent」按鈕時，會跳轉到「Rent」頁面，並且顯示商品的詳細資訊。
+            ．實際上，「Buy」按鈕與「Rent」按鈕會連結到同一個頁面，只是在「Buy」頁面與「Rent」頁面的標題不同。
+        ．在「Buy」頁面與「Rent」頁面中，可以勾選「Need a driver」的選項，並且可以選擇司機。
+
+    ．Login:
+        ．新增信箱的格式檢查。
+
+    The following functions have been modified and added:
+    ． Products:
+        ． Fixed the problem of searching for products by "seller name".
+        ． When searching, you can filter out products that have been sold.
+        ． Added functions to the "Buy" button and "Rent" button.
+            ． When the user clicks the "Buy" button, it will jump to the "Buy" page and display the detailed information of the product.
+            ． When the user clicks the "Rent" button, it will jump to the "Rent" page and display the detailed information of the product.
+            ． In fact, the "Buy" button and "Rent" button link to the same page, but the titles on the "Buy" page and "Rent" page are different.
+        ． In the "Buy" page and "Rent" page, you can check the "Need a driver" option and choose a driver.
+
+    ． Login:
+        ． Add email format check.

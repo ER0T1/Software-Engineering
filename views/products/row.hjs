@@ -10,7 +10,7 @@
     <td>
         {{title}}
     </td>
-    <td hx-get="/products/transactions/{{productID}}" hx-target="#main">
+    <td hx-get="/products/transactions/{{productID}}?productIsOpenOnly={{productIsOpenOnly}}" hx-target="#main">
         <i class="bi bi-arrow-right btn btn-info"></i>
     </td>
 </tr>

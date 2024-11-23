@@ -25,11 +25,11 @@
                 <h4> Price: {{price}} $USD </h4>
                 <hr>
                 {{#canConsume}}
-                <a class="btn btn-success" href="/products/buy/{{transactionID}}">
+                <a class="btn btn-success" hx-get="/products/buy/{{transactionID}}?consume=buy" hx-target="#main">
                     <i class="bi bi-cart4"></i>
                     Buy
                 </a>
-                <a class="btn btn-light btn-outline-success" href="/products/rent/{{transactionID}}">
+                <a class="btn btn-light btn-outline-success" hx-get="/products/buy/{{transactionID}}?consume=rent" hx-target="#main">
                     <i class="bi bi-cart4"></i>
                     Rent
                 </a>

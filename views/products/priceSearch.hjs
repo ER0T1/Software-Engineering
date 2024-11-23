@@ -2,6 +2,10 @@
 <form hx-get="/products/transactions" hx-target="#products">
     <input class="form-control" type="number" placeholder="Max Price" name="maxPrice">
     <input class="form-control" type="number" placeholder="Min Price" name="minPrice">
+    <div>
+        <input class="checkbox" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
+        <lable for="productIsOpenOnly">Only show open products</lable>
+    </div>
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
 <div id="products"></div>
