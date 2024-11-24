@@ -64,16 +64,34 @@ app.get("/search", function (req, res) {
 
 // 顯示使用者詳細資料
 app.get("/:userID", function (req, res) {
-    let SQL = "SELECT firstName, lastName, email, password, created_at FROM Users WHERE userID = ?";
+    let SQL = "SELECT firstName, lastName, email, password, driver, created_at FROM Users WHERE userID = ?";
     doSQL(SQL, [req.params.userID], res, function (data) {
-        res.render('users/detail', {
-            userID: req.params.userID,
-            firstName: data[0].firstName,
-            lastName: data[0].lastName,
-            email: data[0].email,
-            password: data[0].password,
-            created_at: data[0].created_at,
-        });
+        let driver = data[0].driver;
+        if (driver == 0) {
+            res.render('users/detail', {
+                userID: req.params.userID,
+                firstName: data[0].firstName,
+                lastName: data[0].lastName,
+                email: data[0].email,
+                password: data[0].password,
+                drive: "Not a driver.",
+                created_at: data[0].created_at,
+            });
+        }
+        else {
+            let SQL2 = "SELECT description FROM Categories WHERE categoryID = ?";
+            doSQL(SQL2, [data[0].driver], res, function (data2) {
+                res.render('users/detail', {
+                    userID: req.params.userID,
+                    firstName: data[0].firstName,
+                    lastName: data[0].lastName,
+                    email: data[0].email,
+                    password: data[0].password,
+                    drive: data2[0].description,
+                    created_at: data[0].created_at,
+                });
+            });
+        }
     });
 });
 
@@ -81,14 +99,37 @@ app.get("/:userID", function (req, res) {
 app.get("/detail/:userID", function (req, res) {
     const { userID } = req.params;
     const field = req.query.field || "firstName";
-    let SQL = `SELECT ${field} FROM Users WHERE userID = ?`;
 
-    doSQL(SQL, [userID], res, function (data) {
-        res.render('users/edit', {
-            userID: userID,
-            [field]: data[0][field],
+    if (field !== "drive") {
+        let SQL = `SELECT ${field} FROM Users WHERE userID = ?`;
+        doSQL(SQL, [userID], res, function (data) {
+            res.render('users/edit', {
+                userID: userID,
+                [field]: data[0][field],
+            });
         });
-    });
+    }
+    else {
+        let SQL2 = "SELECT categoryID, description FROM Categories";
+        let SQL = "SELECT driver FROM Users WHERE userID = ?";
+
+        doSQL(SQL, [userID], res, function (data) {
+            doSQL(SQL2, [], res, function (categories) {
+                let updatedCategories = categories.map(category => {
+                    return {
+                        categoryID: category.categoryID,
+                        description: category.description,
+                        selected: category.categoryID === data[0].driver ? "selected" : "",
+                    };
+                });
+                res.render('users/edit', {
+                    userID: userID,
+                    drive: data[0].driver || true,
+                    categories: updatedCategories,
+                });
+            });
+        });
+    }
 });
 
 // 使用PUT方法更新資料
@@ -98,74 +139,102 @@ app.put("/detail/:userID", function (req, res) {
     const lastName = req.body.lastName || null;
     const email = req.body.email || null;
     const password = req.body.password || null;
+    const drive = req.body.drive || null;
 
-    let showTable = function () {
-        let SQL = "SELECT ";
-        let editDataName = "";
-        let th = "";
-
-        if (firstName !== null) {
-            SQL += "firstName ";
-            editDataName = "firstName";
-            th = "First Name";
-        }
-        if (lastName !== null) {
-            SQL += "lastName ";
-            editDataName = "lastName";
-            th = "Last Name";
-        }
-        if (email !== null) {
-            SQL += "email ";
-            editDataName = "email";
-            th = "E-Mail";
-        }
-        if (password !== null) {
-            SQL += "password ";
-            editDataName = "password";
-            th = "Password";
-        }
-
-        SQL += "FROM Users WHERE userID = ?";
-        doSQL(SQL, [userID], res, function (data) {
-            res.render('users/detailRow', {
-                userID: userID,
-                th: th,
-                editDataName: editDataName,
-                editData: data[0][editDataName],
+    if (drive !== null) {
+        let showTable = function () {
+            let SQL = "SELECT description FROM Categories WHERE categoryID = ?";
+            doSQL(SQL, [drive], res, function (data) {
+                res.render('users/detailRow', {
+                    userID: userID,
+                    th: "Drive",
+                    editDataName: "drive",
+                    editData: data[0].description,
+                });
             });
-        });
-    };
-
-    if (req.body.action === "update") {
-        let SQL = "UPDATE Users SET ";
-        let parms = [];
-
-        if (firstName !== null) {
-            SQL += "firstName = ?";
-            parms.push(firstName);
-        }
-        if (lastName !== null) {
-            SQL += "lastName = ?";
-            parms.push(lastName);
-        }
-        if (email !== null) {
-            SQL += "email = ?";
-            parms.push(email);
-        }
-        if (password !== null) {
-            SQL += "password = ?";
-            parms.push(password);
         }
 
-        SQL += " WHERE userID = ?";
-        parms.push(userID);
-
-        doSQL(SQL, parms, res, function (data) {
+        if (req.body.action === "update") {
+            let SQL = "UPDATE Users SET driver = ? WHERE userID = ?";
+            doSQL(SQL, [drive, userID], res, function (data) {
+                showTable();
+            });
+        }
+        else {
             showTable();
-        });
+        }
     }
     else {
-        showTable();
+
+        let showTable = function () {
+            let SQL = "SELECT ";
+            let editDataName = "";
+            let th = "";
+
+            if (firstName !== null) {
+                SQL += "firstName ";
+                editDataName = "firstName";
+                th = "First Name";
+            }
+            if (lastName !== null) {
+                SQL += "lastName ";
+                editDataName = "lastName";
+                th = "Last Name";
+            }
+            if (email !== null) {
+                SQL += "email ";
+                editDataName = "email";
+                th = "E-Mail";
+            }
+            if (password !== null) {
+                SQL += "password ";
+                editDataName = "password";
+                th = "Password";
+            }
+
+            SQL += "FROM Users WHERE userID = ?";
+            doSQL(SQL, [userID], res, function (data) {
+                res.render('users/detailRow', {
+                    userID: userID,
+                    th: th,
+                    editDataName: editDataName,
+                    editData: data[0][editDataName],
+                });
+            });
+        };
+
+        if (req.body.action === "update") {
+            let SQL = "UPDATE Users SET ";
+            let parms = [];
+
+            if (firstName !== null) {
+                SQL += "firstName = ?";
+                parms.push(firstName);
+            }
+            if (lastName !== null) {
+                SQL += "lastName = ?";
+                parms.push(lastName);
+            }
+            if (email !== null) {
+                SQL += "email = ?";
+                parms.push(email);
+            }
+            if (password !== null) {
+                SQL += "password = ?";
+                parms.push(password);
+            }
+
+            SQL += " WHERE userID = ?";
+            parms.push(userID);
+
+            doSQL(SQL, parms, res, function (data) {
+                showTable();
+            });
+        }
+        else {
+            showTable();
+        }
+
     }
 });
 

@@ -46,7 +46,7 @@ CREATE TABLE `Transactions` (
     `buyerID` INT DEFAULT NULL,
     `driverID` INT DEFAULT NULL,    -- Keep NULL first, and then use SQL syntax to assign values.
     `price` DECIMAL(10, 2) NOT NULL,
-    `status` VARCHAR(255) CHECK (`status` = 'open' OR `status` = 'close') NOT NULL,
+    `status` VARCHAR(255) CHECK (`status` = 'open' OR `status` = 'close') NOT NULL DEFAULT 'open',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   -- Randomly generated using EXCEL.
     `d` BOOLEAN DEFAULT NULL,   -- This is for generating which transaction requires a driver using random data in Excel.
     FOREIGN KEY (`productID`) REFERENCES `Products`(`productID`) ON DELETE CASCADE,

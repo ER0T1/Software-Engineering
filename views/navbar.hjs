@@ -36,11 +36,25 @@
                         <li><a class="dropdown-item" href="/products/keywordSearch">Search by Keyword</a></li>
                     </ul>
                 </li>
+                {{#loggedIn}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Launch
+                    </a>
+                    <ul class="dropdown-menu" hx-target="#main">
+                        <li><a class="dropdown-item" href="/launch/existingProduct">Launch Existing Product</a></li>
+                        <li><a class="dropdown-item" href="/launch/newProduct">Launch New Product</a></li>
+                    </ul>
+                </li>
+                {{/loggedIn}}
             </ul>
         </div>
         {{#loggedIn}}
         <form action="/login/logout" method="post" hx-boost="false">
             <button class="navbar-brand btn btn-link" type="submit">Logout</button>
+        </form>
+        <form action="/login/profile" method="post">
+            <button class="navbar-brand btn btn-link" type="submit">Profile</button>
         </form>
         {{/loggedIn}}
         {{^loggedIn}}

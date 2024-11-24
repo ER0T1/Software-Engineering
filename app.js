@@ -3,7 +3,7 @@
 In this assignment, we will build our long-waited(?) 3-tier application (client-server architecture)using Web 
 technology that you have learned (express, htmx, bootstrap, mysql, etc.). You’rerequired to develop the application 
 with at least the following functions: 
-    • Add/change/remove a vehicle (for sale) information in the database. 
+    • Add/change/remove a vehicle (for sale) information in the database. [Done]
     • Add/change/remove a user in the system (for admins.). [Done]
     • Add/change/remove a service advertisement (e.g. driver) in the system. 
     • Search for vehicles in the system. [Done]
@@ -15,7 +15,7 @@ with at least the following functions:
 
 在本次作業中，我們將使用你所學的網頁技術（express、htmx、bootstrap、mysql 等）來建立期待已久的（？）3 層應用程式（客戶端
 -伺服器架構）。你需要開發的應用程式至少具有以下功能：
-    • 在資料庫中新增/變更/刪除車輛（待售）資訊。
+    • 在資料庫中新增/變更/刪除車輛（待售）資訊。[已完成]
     • 新增/更改/刪除系統中的使用者（針對管理員）。[已完成]
     • 在系統中新增/更改/刪除服務廣告（例如駕駛）。
     • 在系統中搜尋車輛。[已完成]
@@ -114,6 +114,12 @@ app.use("/products", products);
 const login = require('./routes/login');
 login.connection = connection;
 app.use('/login', login);
+
+const launch = require('./routes/launch');
+launch.connection = connection;
+app.use('/launch', launch);
+
+app.use('/images', express.static('public/images'));
 
 app.listen(80, function () {
     console.log(

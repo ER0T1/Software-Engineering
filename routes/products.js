@@ -408,7 +408,7 @@ app.get('/drivers', function (req, res) {
 app.post('/buy/:transactionID', function (req, res) {
     const { transactionID } = req.params;
     const buyerID  = req.signedCookies.userID;
-    const { needDriver, driver } = req.body;
+    let { needDriver, driver } = req.body;
 
     if (!driver) {
         driver = null;

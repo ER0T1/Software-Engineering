@@ -1,0 +1,11 @@
+<tr class="align-middle">
+    <td>
+        {{productID}}
+    </td>
+    <td>
+        {{title}}
+    </td>
+    <td hx-get="/launch/launchExistingProduct/{{productID}}" hx-target="#main">
+        <i class="bi bi-arrow-right btn btn-info"></i>
+    </td>
+</tr>

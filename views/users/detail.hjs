@@ -24,7 +24,6 @@
         </tr>
         <tr>
             <th>E-Mail</th>
-
             <td>
                 <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=email" hx-target="closest td">
                     <i class="bi bi-pencil"></i>
@@ -34,12 +33,20 @@
         </tr>
         <tr>
             <th>Password</th>
-
             <td>
                 <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=password" hx-target="closest td">
                     <i class="bi bi-pencil"></i>
                 </span>
                 {{password}}
+            </td>
+        </tr>
+        <tr>
+            <th>Drive</th>
+            <td>
+                <span class="btn btn-primary" hx-get="/users/detail/{{userID}}?field=drive" hx-target="closest td">
+                    <i class="bi bi-pencil"></i>
+                </span>
+                {{drive}}
             </td>
         </tr>
         <tr>

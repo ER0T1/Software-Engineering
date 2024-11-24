@@ -108,3 +108,36 @@
 
     ． Login:
         ． Add email format check.
+
+24.11.25
+    修改表格 Transactions(status) 默認值為「open」。
+    修改與新增了以下功能:
+    ．Launch:
+        ．新增了「Launch Existing Product」與「Launch New Product」兩個功能。
+        ．當使用者點擊「Launch Existing Product」時，會跳轉到「Launch Existing Product」頁面，並且可以用category與title來搜尋既有商品，點擊右方的箭頭按鈕可以編輯商品的價格，點擊 Launch 按鈕可以發布商品。
+        ．當使用者點擊「Launch New Product」時，會跳轉到「Launch New Product」頁面，並且可以選擇商品的類別，並且填寫商品的詳細資訊，點擊 Launch 按鈕可以發布商品。
+
+    ．Login:
+        ．新增「Profile」按鈕，可以查看使用者的個人資訊。
+        ．在 Profile 頁面中，可以查看自己發布的商品，並且可以刪除/編輯商品。
+        ．在 public 資料夾中新增了「images」資料夾，用來存放共用大頭貼的圖片。
+        ．在 Profile 頁面中，點擊 Edit Profile 按鈕，可以修改使用者的個人資訊。(這其實是連結到「User Details」頁面)
+
+    ．Users
+        ．新增在「Users」頁面中，可以編輯駕駛類型。
+
+    Modify the default value of the Transactions(status) table to "open".
+    The following functions have been modified and added:
+    ． Launch:
+        ． Added two functions "Launch Existing Product" and "Launch New Product".
+        ． When the user clicks "Launch Existing Product", it will jump to the "Launch Existing Product" page, and you can search for existing products by category and title. Click the arrow button on the right to edit the price of the product, and click the Launch button to publish the product.
+        ． When the user clicks "Launch New Product", it will jump to the "Launch New Product" page, and you can choose the category of the product and fill in the detailed information of the product. Click the Launch button to publish the product.
+
+    ． Login:
+        ． Add "Profile" button, you can view the user's personal information.
+        ． In the Profile page, you can view the products you have published, and you can delete/edit the products.
+        ． Add an "images" folder in the public folder to store images of shared avatars.
+        ． In the Profile page, click the Edit Profile button to modify the user's personal information. (This is actually a link to the "User Details" page)
+
+    ． Users
+        ． Added the ability to edit driver types on the "Users" page.

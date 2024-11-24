@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th> Product ID </th>
+            <th> Product Name </th>
+            <th> To Launch </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#products}}
+        {{> row}}
+        {{/products}}
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        {{#prevPage}}
+        <li class="page-item">
+            <a class="page-link" hx-get="/launch/searchExistingProduct?keyword={{keyword}}&page={{prevPage}}" hx-boost="true"
+                hx-target="#products">Previous</a>
+        </li>
+        {{/prevPage}}
+        <li class="page-item">
+            <span class="page-link">Page {{page}}</span>
+        </li>
+        {{#nextPage}}
+        <li class="page-item">
+            <a class="page-link" hx-get="/launch/searchExistingProduct?keyword={{keyword}}&page={{nextPage}}" hx-boost="true"
+                hx-target="#products">Next</a>
+        </li>
+        {{/nextPage}}
+    </ul>
+</nav>

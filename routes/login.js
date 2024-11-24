@@ -88,4 +88,47 @@ app.post('/register', function (req, res) {
     });
 });
 
+app.post(['/profile', '/profile/:userID'], function (req, res) {
+    const userID = req.signedCookies.userID || req.params.userID;
+
+    const SQL = "SELECT * FROM Users WHERE userID = ?";
+    const SQL2 = `
+        SELECT t.transactionID, p.title, c.description, t.status, p.payment, t.price, t.buyerID
+        FROM Transactions t 
+        JOIN Products p ON t.productID = p.productID 
+        JOIN Categories c ON p.categoryID = c.categoryID
+        WHERE sellerID = ?
+    `;
+    const SQL3 = "SELECT description FROM Categories WHERE categoryID = ?";
+    const parms = [userID];
+
+    doSQL(SQL, parms, res, function (userData) {
+        doSQL(SQL2, parms, res, function (transactionsData) {
+            if (userData[0].driver == 0) {
+                res.render('login/profile', {
+                    userID,
+                    firstName: userData[0].firstName,
+                    lastName: userData[0].lastName,
+                    email: userData[0].email,
+                    transactions: transactionsData,
+                    partials: { row: 'login/row' },
+                });
+            }
+            else {
+                doSQL(SQL3, userData[0].driver, res, function (description) {
+                    res.render('login/profile', {
+                        userID,
+                        firstName: userData[0].firstName,
+                        lastName: userData[0].lastName,
+                        email: userData[0].email,
+                        description: description[0].description,
+                        transactions: transactionsData,
+                        partials: { row: 'login/row' },
+                    });
+                });
+            }
+        });
+    });
+});
+
 module.exports = app;

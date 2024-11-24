@@ -2,28 +2,33 @@
 
     {{#firstName}}
     <label for="firstName"></label>
-    <input type="text" name="firstName" value="{{firstName}}" required>
+    <input type="text" id="firstName" name="firstName" value="{{firstName}}" required>
     {{/firstName}}
 
     {{#lastName}}
     <label for="lastName"></label>
-    <input type="text" name="lastName" value="{{lastName}}" required>
+    <input type="text" id="lastName" name="lastName" value="{{lastName}}" required>
     {{/lastName}}
 
     {{#email}}
     <label for="email"></label>
-    <input type="text" name="email" value="{{email}}" required>
+    <input type="text" id="email" name="email" value="{{email}}" required>
     {{/email}}
 
     {{#password}}
     <label for="password"></label>
-    <input type="text" name="password" value="{{password}}" required>
+    <input type="text" id="password" name="password" value="{{password}}" required>
     {{/password}}
 
-    {{#created_at}}
-    <label for="created_at"></label>
-    <input type="text" name="created_at" value="{{created_at}}" required>
-    {{/created_at}}
+    {{#drive}}
+    <label for="drive"></label>
+    <select class="form-select" id="drive" name="drive">
+        <option value="">--- Select a product category ---</option>
+        {{#categories}}
+        <option value="{{categoryID}}" {{selected}}>{{description}}</option>
+        {{/categories}}
+    </select>
+    {{/drive}}
 
     <button type="submit" class="btn btn-success" title="Update" name="action" value="update">
         <i class="bi bi-check-lg"></i>
