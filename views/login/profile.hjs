@@ -11,7 +11,7 @@
                     {{#description}}
                     <p class="card-text"><strong>Driver:</strong> {{description}}</p>
                     {{/description}}
-                    <span class="btn btn-primary" hx-get="/users/{{userID}}" hx-target="#main">
+                    <span class="btn btn-secondary" hx-get="/users/{{userID}}" hx-target="#main">
                         <i class="bi bi-arrow-right"></i>
                         Edit Profile
                     </span>

@@ -67,6 +67,13 @@ CREATE TABLE `Ratings` (
     FOREIGN KEY (`buyerID`) REFERENCES `Users`(`userID`) ON DELETE CASCADE
 );
 
+CREATE TABLE `Advertisements` (
+    `advertisementID` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Manually correct incorrect separation in csv files.
 -- Use phpMyAdmin to import CSV files; if the file exceeds 2048KB, import it as a ZIP file.
 -- Due to previously set restrictions, incorrect data will be automatically excluded when importing data.

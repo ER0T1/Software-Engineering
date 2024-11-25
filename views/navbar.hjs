@@ -46,6 +46,17 @@
                         <li><a class="dropdown-item" href="/launch/newProduct">Launch New Product</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Advertisements
+                    </a>
+                    <ul class="dropdown-menu" hx-target="#main">
+                        <li><a class="dropdown-item" href="/advertisements/">Launch Advertisement</a></li>
+                        {{#admin}}
+                        <li><a class="dropdown-item" href="/advertisements/manage">Manage Advertisements</a></li>
+                        {{/admin}}
+                    </ul>
+                </li>
                 {{/loggedIn}}
             </ul>
         </div>

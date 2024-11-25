@@ -1,0 +1,30 @@
+{{#title}}
+<tr>
+    <th class="bg-light" style="width: 30%;">Title</th>
+    <td>
+        <div class="d-flex align-items-center justify-content-between">
+            <span>{{title}}</span>
+            <button class="btn btn-sm btn-outline-primary"
+                hx-get="/advertisements/detail/{{advertisementID}}?field=title" hx-target="closest td">
+                <i class="bi bi-pencil"></i> Edit
+            </button>
+        </div>
+    </td>
+</tr>
+{{/title}}
+{{#description}}
+<tr>
+    <th class="bg-light">Description</th>
+    <td>
+        <div class="d-flex flex-column">
+            <pre class="bg-light p-3 rounded text-wrap" style="white-space: pre-wrap;">{{description}}</pre>
+            <div class="text-end mt-2">
+                <button class="btn btn-sm btn-outline-primary"
+                    hx-get="/advertisements/detail/{{advertisementID}}?field=description" hx-target="closest td">
+                    <i class="bi bi-pencil"></i> Edit
+                </button>
+            </div>
+        </div>
+    </td>
+</tr>
+{{/description}}

@@ -1,16 +1,19 @@
 <tr>
-    <td rowspan="3" class="align-middle">
+    <td rowspan="3" class="align-middle text-center">
         {{#editable}}
-        <a class="btn btn-danger" hx-delete="/products/delete/{{transactionID}}" hx-target="#main">
+        <button class="btn btn-danger btn-sm" title="Delete Transaction" 
+            hx-delete="/products/delete/{{transactionID}}" hx-target="#main">
             <i class="bi bi-trash"></i>
-        </a>
-        <a class="btn btn-primary" hx-get="/products/edit/{{transactionID}}" hx-target="#main">
+        </button>
+        <button class="btn btn-primary btn-sm" title="Edit Transaction" 
+            hx-get="/products/edit/{{transactionID}}" hx-target="#main">
             <i class="bi bi-pencil"></i>
-        </a>
+        </button>
         {{/editable}}
-        <a class="btn btn-info" hx-get="/products/detail/{{transactionID}}" hx-target="#main">
+        <button class="btn btn-info btn-sm" title="View Transaction Details" 
+            hx-get="/products/detail/{{transactionID}}" hx-target="#main">
             <i class="bi bi-arrow-right"></i>
-        </a>
+        </button>
         {{transactionID}}
     </td>
     <th colspan="2">{{title}}</th>

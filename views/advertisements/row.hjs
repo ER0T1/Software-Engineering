@@ -1,0 +1,18 @@
+<tr class="align-middle">
+    <td class="text-center">
+        <button class="btn btn-danger btn-sm" title="Delete Advertisement" 
+            hx-delete="/advertisements/{{advertisementID}}" hx-target="closest tr">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+        <span class="ms-2">{{advertisementID}}</span>
+    </td>
+    <td class="text-left">
+        {{title}}
+    </td>
+    <td class="text-center">
+        <button class="btn btn-info btn-sm" title="View Details" 
+            hx-get="/advertisements/{{advertisementID}}" hx-target="#main">
+            <i class="bi bi-arrow-right"></i>
+        </button>
+    </td>
+</tr>

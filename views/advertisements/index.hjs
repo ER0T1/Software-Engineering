@@ -1,0 +1,39 @@
+<div id="toast" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+    {{#flash}}
+    <div class="toast show text-bg-success">
+        <div class="toast-body">
+            {{flash}}
+        </div>
+    </div>
+    {{/flash}}
+</div>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-secondary text-white">
+                    <h3>Launch Your Advertisement</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" hx-post="/advertisements/launch" hx-target="#main">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Advertisement Title</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                placeholder="Enter your advertisement title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Advertisement Text</label>
+                            <textarea class="form-control" id="description" name="description" rows="5"
+                                placeholder="Enter your advertisement details" required></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send-fill me-1"></i>Launch
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

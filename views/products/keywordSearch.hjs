@@ -1,10 +1,13 @@
-<h2> Products </h2>
-<form class="form" hx-get="/products/searchResult" hx-target="#products">
-    <input class="form-control" type="text" placeholder="Keyword to Search" name="keyword">
-    <div>
-        <input class="checkbox" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
-        <lable for="productIsOpenOnly">Only show open products</lable>
+<h2 class="text-center mb-4">Search Products by Keyword</h2>
+<form class="form mb-4" hx-get="/products/searchResult" hx-target="#products">
+    <div class="mb-3">
+        <label for="keyword" class="form-label">Keyword</label>
+        <input class="form-control" type="text" id="keyword" placeholder="Keyword to Search" name="keyword">
     </div>
-    <button class="btn btn-primary" type="submit">Search</button>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
+        <label class="form-check-label" for="productIsOpenOnly">Only show open products</label>
+    </div>
+    <button class="btn btn-primary w-100" type="submit">Search</button>
 </form>
 <div id="products"></div>

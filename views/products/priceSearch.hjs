@@ -1,11 +1,17 @@
-<h2> Products </h2>
-<form hx-get="/products/transactions" hx-target="#products">
-    <input class="form-control" type="number" placeholder="Max Price" name="maxPrice">
-    <input class="form-control" type="number" placeholder="Min Price" name="minPrice">
-    <div>
-        <input class="checkbox" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
-        <lable for="productIsOpenOnly">Only show open products</lable>
+<h2 class="text-center mb-4">Search Products by Price</h2>
+<form class="form mb-4" hx-get="/products/transactions" hx-target="#products">
+    <div class="mb-3">
+        <label for="minPrice" class="form-label">Min Price</label>
+        <input class="form-control" type="number" id="minPrice" placeholder="Min Price to Search" name="minPrice">
     </div>
-    <button class="btn btn-primary" type="submit">Search</button>
+    <div class="mb-3">
+        <label for="maxPrice" class="form-label">Max Price</label>
+        <input class="form-control" type="number" id="maxPrice" placeholder="Max Price to Search" name="maxPrice">
+    </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
+        <label class="form-check-label" for="productIsOpenOnly">Only show open products</label>
+    </div>
+    <button class="btn btn-primary w-100" type="submit">Search</button>
 </form>
 <div id="products"></div>

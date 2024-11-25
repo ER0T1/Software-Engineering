@@ -1,0 +1,18 @@
+<div class="advertisement-section mt-5">
+    <h4 class="text-center mb-4">Advertisements</h4>
+    <div class="row">
+        {{#advertisements}}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{title}}</h5>
+                    <p class="card-text">{{description}}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Posted on: {{created_at}}</small>
+                </div>
+            </div>
+        </div>
+        {{/advertisements}}
+    </div>
+</div>

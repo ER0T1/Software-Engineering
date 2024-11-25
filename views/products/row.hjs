@@ -1,16 +1,18 @@
 <tr class="align-middle">
-    <td>
+    <td class="text-center">
         {{#admin}}
-        <span class="btn btn-danger" hx-delete="/products/{{productID}}" hx-target="closest tr">
+        <button class="btn btn-danger btn-sm" title="Delete Product" 
+            hx-delete="/products/{{productID}}" hx-target="closest tr">
             <i class="bi bi-trash3-fill"></i>
-        </span>
+        </button>
         {{/admin}}
         {{productID}}
     </td>
-    <td>
-        {{title}}
-    </td>
-    <td hx-get="/products/transactions/{{productID}}?productIsOpenOnly={{productIsOpenOnly}}" hx-target="#main">
-        <i class="bi bi-arrow-right btn btn-info"></i>
+    <td class="text-left">{{title}}</td>
+    <td class="text-center">
+        <button class="btn btn-info btn-sm" title="View Transactions" 
+            hx-get="/products/transactions/{{productID}}?productIsOpenOnly={{productIsOpenOnly}}" hx-target="#main">
+            <i class="bi bi-arrow-right"></i>
+        </button>
     </td>
 </tr>

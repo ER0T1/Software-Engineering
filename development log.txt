@@ -141,3 +141,22 @@
 
     ． Users
         ． Added the ability to edit driver types on the "Users" page.
+
+24.11.26
+    在 DBMS 中新增一個表格「Advertisements」，用來存放廣告的資訊。
+    修改一些 UI 介面。
+    修改與新增了以下功能:
+    ．Advertisements:
+        ．新增了「Launch Advertisement」頁面，可以新增廣告。
+        ．在「Manage Advertisements」頁面中，可以新增、刪除與修改廣告。
+        ．在「Manage Advertisements」頁面中，可以查看廣告的詳細資訊。
+        ．在主頁面中，新增了廣告的輪播，會隨機顯示 3 個廣告。
+
+    Add a new table "Advertisements" in the DBMS to store information about advertisements.
+    Modify some UI interfaces.
+    The following functions have been modified and added:
+    ． Advertisements:
+        ． Added the "Launch Advertisement" page, you can add advertisements.
+        ． In the "Manage Advertisements" page, you can add, delete and modify advertisements.
+        ． In the "Manage Advertisements" page, you can view detailed information about advertisements.
+        ． In the home page, a carousel of advertisements has been added, which will randomly display 3 advertisements.
