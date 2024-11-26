@@ -1,3 +1,4 @@
+<h2 class="text-center mt-3 mb-3">Launch Your Advertisement</h2>
 <div id="toast" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
     {{#flash}}
     <div class="toast show text-bg-success">
@@ -7,13 +8,10 @@
     </div>
     {{/flash}}
 </div>
-<div class="container mt-5 mb-5">
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">
-                <div class="card-header text-center bg-secondary text-white">
-                    <h3>Launch Your Advertisement</h3>
-                </div>
                 <div class="card-body">
                     <form class="form" hx-post="/advertisements/launch" hx-target="#main">
                         <div class="mb-3">

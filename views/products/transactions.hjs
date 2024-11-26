@@ -1,4 +1,15 @@
-<h2 class="text-center mb-4">Product Transactions</h2>
+<div id="toast" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+    {{#flashMessage}}
+    <div class="toast show text-bg-danger">
+        <div class="toast-body">
+            {{flashMessage}}
+        </div>
+    </div>
+    {{/flashMessage}}
+</div>
+
+{{^flashMessage}}
+<h2 class="text-center mt-3 mb-3">Product Transactions</h2>
 <table class="table table-bordered table-hover table-sm align-middle">
     <thead class="table-secondary">
         <tr>
@@ -16,7 +27,8 @@
     <ul class="pagination justify-content-center mt-4">
         {{#prevPage}}
         <li class="page-item">
-            <a class="page-link bg-light text-dark" hx-get="/products/transactions?page={{prevPage}}" hx-boost="true" hx-target="#products">
+            <a class="page-link bg-light text-dark" hx-get="/products/transactions?page={{prevPage}}" hx-boost="true"
+                hx-target="#products">
                 Previous
             </a>
         </li>
@@ -26,10 +38,12 @@
         </li>
         {{#nextPage}}
         <li class="page-item">
-            <a class="page-link bg-light text-dark" hx-get="/products/transactions?page={{nextPage}}" hx-boost="true" hx-target="#products">
+            <a class="page-link bg-light text-dark" hx-get="/products/transactions?page={{nextPage}}" hx-boost="true"
+                hx-target="#products">
                 Next
             </a>
         </li>
         {{/nextPage}}
     </ul>
 </nav>
+{{/flashMessage}}

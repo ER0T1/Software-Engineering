@@ -1,7 +1,7 @@
 {{#existing}}
-<h2> Launch Existing Product </h2>
-<div class="container my-4">
-    <div class="card shadow">
+<h2 class="text-center mt-3 mb-3"> Launch Existing Product </h2>
+<div class="container">
+    <div class="card shadow-sm">
         <div class="card-body">
             <form class="form" hx-post="/launch/launch?product=existing&productID={{productID}}" hx-target="#main">
                 <div class="row mb-3">
@@ -54,9 +54,9 @@
 </div>
 {{/existing}}
 {{#new}}
-<h2> Launch New Product </h2>
-<div class="container my-4">
-    <div class="card shadow">
+<h2 class="text-center mt-3 mb-3"> Launch New Product </h2>
+<div class="container">
+    <div class="card shadow-sm">
         <div class="card-body">
             <form class="form" hx-post="/launch/launch?product=new" hx-target="#main">
                 <div class="row mb-3">

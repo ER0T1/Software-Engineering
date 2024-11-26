@@ -91,6 +91,21 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
     const productIsOpenOnly = req.query.productIsOpenOnly || false;
     let parms = [];
 
+    if (maxPrice !== null && minPrice !== null && maxPrice < minPrice) {
+        res.cookie('flashMessage', 'Max price must be greater than or equal to min price!', {
+            signed: true,
+            maxAge: 10000,
+        });
+
+        res.render('products/transactions', {
+            flashMessage: req.signedCookies.flashMessage,
+            page: page,
+            maxPrice: req.query.maxPrice,
+            minPrice: req.query.minPrice,
+        });
+        return;
+    }
+
     let SQL = `
         SELECT 
             t.transactionID, p.title, c.description, u.firstName, u.lastName, u.email,
@@ -144,7 +159,7 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
             SQL += "AND t.price <= ? ";
             parms.push(maxPrice.toString());
         }
-    
+
         if (minPrice !== null) {
             SQL += "AND t.price >= ? ";
             parms.push(minPrice.toString());
@@ -161,7 +176,7 @@ app.get(['/transactions', '/transactions/:productID'], function (req, res) {
                 prevPage: page > 1 ? page - 1 : null,
                 nextPage: data.length === limit ? page + 1 : null,
                 ownerName: req.query.ownerName || null,
-                productID: req.query.productID  || null,
+                productID: req.query.productID || null,
                 maxPrice: req.query.maxPrice || null,
                 minPrice: req.query.minPrice || null,
                 partials: { transactionRow: 'products/transactionRow' },
@@ -236,7 +251,7 @@ app.post("/transactionEdit/:transactionID", function (req, res) {
         SET title = ?, categoryID = ?, \`condition\` = ?, location = ?, country = ?, payment = ?
         WHERE productID = (SELECT productID FROM Transactions WHERE transactionID = ?)
     `;
-    
+
     let SQL2 = "UPDATE Transactions SET price = ? WHERE transactionID = ?";
 
     let parms = [title, categoryID, condition, location, country, payment, transactionID];
@@ -386,10 +401,10 @@ app.get('/drivers', function (req, res) {
 
         doSQL(driversSQL, [categoryID], res, function (driverData) {
             if (driverData.length > 0) {
-                const options = driverData.map(driver => 
+                const options = driverData.map(driver =>
                     `<option value="${driver.userID}">${driver.firstName} ${driver.lastName}</option>`
                 ).join('');
-                
+
                 res.send(`
                     <div class="form-group">
                         <label for="driver">Select Driver</label>
@@ -407,7 +422,7 @@ app.get('/drivers', function (req, res) {
 
 app.post('/buy/:transactionID', function (req, res) {
     const { transactionID } = req.params;
-    const buyerID  = req.signedCookies.userID;
+    const buyerID = req.signedCookies.userID;
     let { needDriver, driver } = req.body;
 
     if (!driver) {

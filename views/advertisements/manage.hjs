@@ -1,4 +1,4 @@
-<h2 class="text-center mb-4">Manage Advertisements</h2>
+<h2 class="text-center mt-3 mb-3">Manage Advertisements</h2>
 
 <div id="toast" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
     {{#flash}}

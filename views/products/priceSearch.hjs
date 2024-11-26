@@ -1,17 +1,26 @@
-<h2 class="text-center mb-4">Search Products by Price</h2>
-<form class="form mb-4" hx-get="/products/transactions" hx-target="#products">
-    <div class="mb-3">
-        <label for="minPrice" class="form-label">Min Price</label>
-        <input class="form-control" type="number" id="minPrice" placeholder="Min Price to Search" name="minPrice">
+<h2 class="text-center mt-3 mb-3">Search Products by Price</h2>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form class="form" hx-get="/products/transactions" hx-target="#products">
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="minPrice" class="form-label">Min Price</label>
+                    <input class="form-control" type="number" id="minPrice" name="minPrice"
+                        placeholder="Min Price to Search" min="0">
+                </div>
+                <div class="col mb-3">
+                    <label for="maxPrice" class="form-label">Max Price</label>
+                    <input class="form-control" type="number" id="maxPrice" name="maxPrice"
+                        placeholder="Max Price to Search" min="0">
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly"
+                    value="true">
+                <label class="form-check-label" for="productIsOpenOnly">Only show open products</label>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Search</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="maxPrice" class="form-label">Max Price</label>
-        <input class="form-control" type="number" id="maxPrice" placeholder="Max Price to Search" name="maxPrice">
-    </div>
-    <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="productIsOpenOnly" name="productIsOpenOnly" value="true">
-        <label class="form-check-label" for="productIsOpenOnly">Only show open products</label>
-    </div>
-    <button class="btn btn-primary w-100" type="submit">Search</button>
-</form>
+</div>
 <div id="products"></div>

@@ -15,7 +15,7 @@
 
 <body class="container"> {{!-- 網頁內容，class="container" 是 Bootstrap 提供的基本建構塊 --}}
     <header class="text-center"> {{!-- 網頁標題，class="text-center" 是 Bootstrap 提供的文字置中 --}}
-        <h1> Construction Vechicles & Services Platform </h1>
+        <h1 class="mb-4 mt-3 mb-3"> Construction Vechicles & Services Platform </h1>
     </header>
     {{> navbar}} {{!-- 一個 navbar（導覽列），連結到系統的各種功能。點擊某個功能，main#main 顯示該功能的使用者介面。 --}}
     <div id="toast"></div> {{!--用於顯示來自後端資訊的區塊 --}}

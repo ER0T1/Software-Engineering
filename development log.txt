@@ -160,3 +160,7 @@
         ． In the "Manage Advertisements" page, you can add, delete and modify advertisements.
         ． In the "Manage Advertisements" page, you can view detailed information about advertisements.
         ． In the home page, a carousel of advertisements has been added, which will randomly display 3 advertisements.
+
+24.11.27
+    修改一些 UI 介面。
+    Modify some UI interfaces.

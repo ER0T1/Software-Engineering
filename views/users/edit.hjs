@@ -1,39 +1,46 @@
-<form hx-put="/users/detail/{{userID}}" hx-target="closest tr" hx-swap="outerHTML">
+<form hx-put="/users/detail/{{userID}}" hx-target="closest tr" hx-swap="outerHTML" class="p-3 border rounded shadow-sm bg-light">
 
     {{#firstName}}
-    <label for="firstName"></label>
-    <input type="text" id="firstName" name="firstName" value="{{firstName}}" required>
+    <div class="mb-3">
+        <input type="text" id="firstName" name="firstName" value="{{firstName}}" class="form-control" required>
+    </div>
     {{/firstName}}
 
     {{#lastName}}
-    <label for="lastName"></label>
-    <input type="text" id="lastName" name="lastName" value="{{lastName}}" required>
+    <div class="mb-3">
+        <input type="text" id="lastName" name="lastName" value="{{lastName}}" class="form-control" required>
+    </div>
     {{/lastName}}
 
     {{#email}}
-    <label for="email"></label>
-    <input type="text" id="email" name="email" value="{{email}}" required>
+    <div class="mb-3">
+        <input type="email" id="email" name="email" value="{{email}}" class="form-control" required>
+    </div>
     {{/email}}
 
     {{#password}}
-    <label for="password"></label>
-    <input type="text" id="password" name="password" value="{{password}}" required>
+    <div class="mb-3">
+        <input type="password" id="password" name="password" value="{{password}}" class="form-control" required>
+    </div>
     {{/password}}
 
     {{#drive}}
-    <label for="drive"></label>
-    <select class="form-select" id="drive" name="drive">
-        <option value="">--- Select a product category ---</option>
-        {{#categories}}
-        <option value="{{categoryID}}" {{selected}}>{{description}}</option>
-        {{/categories}}
-    </select>
+    <div class="mb-3">
+        <select id="drive" name="drive" class="form-select">
+            <option value="">--- Select a product category ---</option>
+            {{#categories}}
+            <option value="{{categoryID}}" {{selected}}>{{description}}</option>
+            {{/categories}}
+        </select>
+    </div>
     {{/drive}}
 
-    <button type="submit" class="btn btn-success" title="Update" name="action" value="update">
-        <i class="bi bi-check-lg"></i>
-    </button>
-    <button type="submit" class="btn btn-warning" title="Cancel" name="action" value="cancel">
-        <i class="bi bi-x-lg"></i>
-    </button>
+    <div class="d-flex justify-content-end gap-2">
+        <button type="submit" class="btn btn-success" title="Update" name="action" value="update">
+            <i class="bi bi-check-lg"></i> Update
+        </button>
+        <button type="submit" class="btn btn-warning" title="Cancel" name="action" value="cancel">
+            <i class="bi bi-x-lg"></i> Cancel
+        </button>
+    </div>
 </form>
