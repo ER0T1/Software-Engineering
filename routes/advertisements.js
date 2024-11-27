@@ -31,8 +31,8 @@ app.get(['/', '/index'], function (req, res) {
 });
 
 app.post('/launch', function (req, res) {
-    let SQL = "INSERT INTO Advertisements (title, description) VALUES (?, ?)";
-    let parms = [req.body.title, req.body.description];
+    let SQL = "INSERT INTO Advertisements (title, description, userID) VALUES (?, ?, ?)";
+    let parms = [req.body.title, req.body.description, req.signedCookies.userID];
     doSQL(SQL, parms, res, function () {
         res.cookie('flash', "Your advertisement has been launched!", { signed: true, maxAge: 10000 });
         res.redirect('/advertisements/');

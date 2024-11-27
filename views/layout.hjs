@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/bootstrap-icons.min.css"> {{!-- Bootstrap Icons 圖示庫 --}}
     <script src="/bootstrap.min.js"></script> {{!-- Bootstrap JavaScript 函式庫 --}}
     {{!-- Bootstrap-icons.woff2 --}} {{!-- 網頁圖示字型檔案 --}}
+    <link rel="manifest" href="manifest.json"> {{!-- PWA 應用程式清單 --}}
 </head>
 
 <body class="container"> {{!-- 網頁內容，class="container" 是 Bootstrap 提供的基本建構塊 --}}

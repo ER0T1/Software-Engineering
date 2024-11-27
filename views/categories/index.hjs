@@ -1,9 +1,9 @@
-<h2> Categories </h2>
-<table class="table table-striped table-hover table-sm">
-    <thead>
+<h2 class="text-center my-3"> Categories </h2>
+<table class="table table-bordered table-hover table-sm align-middle">
+    <thead class="table-secondary">
         <tr>
-            <th> ID </th>
-            <th> Category </th>
+            <th class="text-center" style="width: 25%;"> ID </th>
+            <th class="text-center" style="width: 75%;"> Category </th>
         </tr>
     </thead>
     <tbody>

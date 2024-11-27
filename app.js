@@ -77,7 +77,7 @@ app.get('/', (req, res) => {
             );
         } else {
             res.render('layout', {
-                title: 'Construction Vechicles & Services',
+                title: 'Construction Vechicles & Services Platform',
                 loggedIn: req.signedCookies.loggedIn === 'true',
                 admin: req.signedCookies.admin === 'true',
                 userID: req.signedCookies.userID,
@@ -103,7 +103,7 @@ app.get('/*', function (req, res, next) {
             next();
         } else {
             res.render('layout', {
-                title: 'Construction Vechicles & Services',
+                title: 'Construction Vechicles & Services Platform',
                 where: req.url,
                 advertisements: rows, // 傳遞隨機三筆廣告資料到模板
                 partials: {

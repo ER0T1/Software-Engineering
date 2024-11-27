@@ -66,16 +66,16 @@
         <ul class="pagination justify-content-center mt-4">
             {{#prevPage}}
             <li class="page-item">
-                <a class="page-link" hx-get="/advertisements/search?keyword={{keyword}}&page={{prevPage}}" 
+                <a class="page-link bg-light text-dark" hx-get="/advertisements/search?keyword={{keyword}}&page={{prevPage}}" 
                     hx-boost="true" hx-target="#advertisements">Previous</a>
             </li>
             {{/prevPage}}
             <li class="page-item disabled">
-                <span class="page-link">Page {{page}}</span>
+                <span class="page-link bg-light text-dark">Page {{page}}</span>
             </li>
             {{#nextPage}}
             <li class="page-item">
-                <a class="page-link" hx-get="/advertisements/search?keyword={{keyword}}&page={{nextPage}}" 
+                <a class="page-link bg-light text-dark" hx-get="/advertisements/search?keyword={{keyword}}&page={{nextPage}}" 
                     hx-boost="true" hx-target="#advertisements">Next</a>
             </li>
             {{/nextPage}}

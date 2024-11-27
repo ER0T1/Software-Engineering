@@ -164,3 +164,16 @@
 24.11.27
     修改一些 UI 介面。
     Modify some UI interfaces.
+
+24.11.28
+    修改 DBMS 中所有表格的外鍵限制式屬性，全都設置為「ON DELETE CASCADE ON UPDATE CASCADE」。
+    新增 DBMS 中 Advertisements 表格一個欄位「userID」，用來存放廣告的發布者。
+    修改一些 UI 介面。
+    在「public」資料夾中新增了「manifest.json」檔案，用來設置 PWA 的屬性。
+    在「public/images」資料夾中新增了「icons」資料夾，用來存放 PWA 的圖示。
+
+    Modify the foreign key constraint properties of all tables in the DBMS, all set to "ON DELETE CASCADE ON UPDATE CASCADE".
+    Add a field "userID" to the Advertisements table in the DBMS to store the publisher of the advertisement.
+    Modify some UI interfaces.
+    Add a "manifest.json" file in the "public" folder to set the properties of PWA.
+    Add an "icons" folder in the "public/images" folder to store icons of PWA.

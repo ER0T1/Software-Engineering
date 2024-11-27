@@ -47,7 +47,7 @@ app.delete("/:categoryID", function (req, res) {
 app.get("/:categoryID", function (req, res) {
     let SQL = "SELECT description FROM Categories WHERE categoryID = ?";
     doSQL(SQL, [req.params.categoryID], res, function (data) {
-        res.send('categories/edit', {
+        res.render('categories/edit', {
             categoryID: req.params.categoryID,
             description: data[0].description,
         });

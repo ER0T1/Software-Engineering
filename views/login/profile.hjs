@@ -1,5 +1,6 @@
-<h2> Profile </h2>
-<div class="container my-5">
+<h2 class="text-center mt-3 mb-3"> Profile </h2>
+<hr>
+<div class="container">
     <div class="row">
 
         <div class="col-md-4">
