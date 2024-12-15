@@ -1,0 +1,15 @@
+<form hx-put="/categories/{{categoryID}}" hx-target="closest tr" hx-swap="outerHTML"
+    class="p-3 border rounded shadow-sm bg-light">
+    <div class="mb-3">
+        <input type="text" name="description" value="{{description}}" class="form-control" required>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+        <button type="submit" class="btn btn-success" title="Update" name="action" value="update">
+            <i class="bi bi-check-lg"></i> Update
+        </button>
+        <button type="submit" class="btn btn-warning" title="Cancel" name="action" value="cancel">
+            <i class="bi bi-x-lg"></i> Cancel
+        </button>
+    </div>
+</form>

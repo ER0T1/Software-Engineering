@@ -177,3 +177,29 @@
     Modify some UI interfaces.
     Add a "manifest.json" file in the "public" folder to set the properties of PWA.
     Add an "icons" folder in the "public/images" folder to store icons of PWA.
+
+24.12.04
+    修改與新增了以下功能:
+    ．config.js:
+        ．新增「禁止多重查詢(Disallow Multiple Queries)」。
+
+    ．app.js:
+        ．啟用 HttpOnly Cookie。
+
+    製作一個docker-compose.yaml。
+
+    Modify and add the following functions:
+    ．config.js:
+        ．Add "Disallow Multiple Queries".
+
+    ．app.js:
+        ．Enable HttpOnly Cookie.
+
+    Create a docker-compose.yaml.
+
+24.12.16
+    修改了一些BUG。
+    調整了一些 UI 介面。
+
+    Modify some BUGs.
+    Adjust some UI interfaces.

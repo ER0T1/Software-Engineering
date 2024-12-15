@@ -1,0 +1,67 @@
+name: Heavydeal
+
+networks:
+  Heavydeal-app:
+
+
+volumes:
+  mysql_data:
+
+
+services:
+  mysql:
+    networks:
+      - Heavydeal-app
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./DBMS:/docker-entrypoint-initdb.d
+    container_name: mysql1
+    image: mysql:latest
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 1s
+      retries: 4
+
+  phpmyadmin:
+    networks:
+      - Heavydeal-app
+    image: phpmyadmin:latest
+    container_name: phpmyadmin1
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  web:
+    stdin_open: true
+    tty: true
+    networks:
+      - Heavydeal-app
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 8081:80
+    container_name: Heavydeal
+    image: node
+    working_dir: /app
+    command: "npm start"
+    volumes:
+      - ./Heavydeal.app:/app
+    depends_on:
+      mysql:
+        condition: service_healthy

@@ -1,0 +1,65 @@
+<table class="table table-striped table-hover table-sm">
+    <thead>
+        <tr>
+            <th> Advertisement ID </th>
+            <th> Title </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#data}}
+        {{> row}}
+        {{/data}}
+        <tr>
+            <td colspan='3' class="text-left">
+                <div class="container mt-2 mb-2">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-header text-center bg-secondary text-white">
+                                    <h3>Launch Your Advertisement</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form" hx-post="/advertisements/launch" hx-target="#main">
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">Advertisement Title</label>
+                                            <input type="text" class="form-control" id="title" name="title"
+                                                placeholder="Enter your advertisement title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="description" class="form-label">Advertisement Text</label>
+                                            <textarea class="form-control" id="description" name="description" rows="5"
+                                                placeholder="Enter your advertisement details" required></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">Launch</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        {{#prevPage}}
+        <li class="page-item">
+            <a class="page-link" hx-get="/advertisements/search?keyword={{keyword}}&page={{prevPage}}" hx-boost="true"
+                hx-target="#users">Previous</a>
+        </li>
+        {{/prevPage}}
+        <li class="page-item">
+            <span class="page-link">Page {{page}}</span>
+        </li>
+        {{#nextPage}}
+        <li class="page-item">
+            <a class="page-link" hx-get="/advertisements/search?keyword={{keyword}}&page={{nextPage}}" hx-boost="true"
+                hx-target="#users">Next</a>
+        </li>
+        {{/nextPage}}
+    </ul>
+</nav>

@@ -1,0 +1,28 @@
+<form class="form-inline p-3 border rounded shadow-sm" 
+      hx-put="/advertisements/detail/{{advertisementID}}" 
+      hx-target="closest tr" 
+      hx-swap="outerHTML">
+
+    {{#title}}
+    <div class="mb-3">
+        <label for="title" class="form-label fw-bold">Title</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{title}}" placeholder="Enter title" required>
+    </div>
+    {{/title}}
+
+    {{#description}}
+    <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Enter description" required>{{description}}</textarea>
+    </div>
+    {{/description}}
+
+    <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-outline-success me-2" title="Update" name="action" value="update">
+            <i class="bi bi-check-lg"></i> Update
+        </button>
+        <button type="submit" class="btn btn-outline-warning" title="Cancel" name="action" value="cancel">
+            <i class="bi bi-x-lg"></i> Cancel
+        </button>
+    </div>
+</form>

@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "cookie-parser": "^1.4.7",
-    "express": "^4.21.1",
-    "hjs": "^0.0.6",
-    "mysql2": "^3.11.4"
-  }
-}

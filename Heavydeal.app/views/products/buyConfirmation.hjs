@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="text-center my-4">{{#buy}}Buy{{/buy}}{{#rent}}Rent{{/rent}}</h2>
+    <ul class="list-group my-3">
+        <li class="list-group-item"><strong>Transaction ID:</strong> {{transactionID}}</li>
+        <li class="list-group-item"><strong>Product Name:</strong> {{title}}</li>
+        <li class="list-group-item"><strong>Category:</strong> {{description}}</li>
+        <li class="list-group-item"><strong>Condition:</strong> {{condition}}</li>
+        <li class="list-group-item"><strong>Seller Name:</strong> {{seller}}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{email}}</li>
+        <li class="list-group-item"><strong>Location:</strong> {{location}}</li>
+        <li class="list-group-item"><strong>Country:</strong> {{country}}</li>
+        <li class="list-group-item"><strong>Payment:</strong> {{payment}}</li>
+        <li class="list-group-item"><strong>Price:</strong> {{price}} $USD</li>
+    </ul>
+    <form class="form mt-3" hx-post="/products/buy/{{transactionID}}" hx-target="#main">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="needDriver" name="needDriver" hx-get="/products/drivers?transactionID={{transactionID}}" hx-target="#driverDropdown" hx-swap="innerHTML">
+            <label class="form-check-label" for="needDriver">Need a driver</label>
+        </div>
+        <div id="driverDropdown" class="my-3"></div>
+        <button type="submit" class="btn btn-primary w-100">{{#buy}}Buy{{/buy}}{{#rent}}Rent{{/rent}}</button>
+    </form>
+</div>

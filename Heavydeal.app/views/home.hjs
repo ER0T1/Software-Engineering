@@ -1,0 +1,139 @@
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/images/banner1.jpg" alt="banner1" style="width: 100%; height: 100%; object-fit: cover;" />
+
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1>Heavydeal!</h1>
+                    <p>Your Construction Needs, Just a Click Away!</p>
+                    <p><a class="btn btn-lg btn-primary" href="/login/register">Sign up today</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/banner2.jpg" alt="banner1" style="width: 100%; height: 100%; object-fit: cover;" />
+
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Heavy Machinery Made Easy.</h1>
+                    <p>From buying and renting machinery to connecting with experienced service providers, we've made
+                        construction easy, reliable, and efficient.</p>
+                    <p><a class="btn btn-lg btn-primary" hx-get="/products/keywordSearch" hx-target="#main">Learn
+                            more</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/banner3.jpg" alt="banner1" style="width: 100%; height: 100%; object-fit: cover;" />
+
+            <div class="container">
+                <div class="carousel-caption text-end">
+                    <h1>Connecting Builders, Drivers, and Machines.</h1>
+                    <p>Find the perfect construction vehicle or skilled driver for your next big project—simplify your
+                        search with our smart matching platform.</p>
+                    <p><a class="btn btn-lg btn-primary" href="/products/keywordSearch">Search products</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Find. Rent. Build.</h2>
+            <p>Streamline your construction projects with our platform—whether you need heavy machinery, skilled
+                operators, or both, we’ve got you covered.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Digging & Building</h2>
+            <p>Your one-stop destination for all construction needs—connect with buyers, sellers, and service providers,
+                and build smarter than ever.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Projects Easy</h2>
+            <p>Construction made simple: explore, compare, and secure the best vehicles and services to drive your
+                projects forward.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Revolutionizing Construction: Your One-Stop Platform for Vehicles and
+                Services</h2>
+            <p class="lead">In today's fast-paced construction world, efficiency is everything. Our platform offers a
+                seamless solution for contractors, vehicle owners, and service providers to connect effortlessly. From
+                buying and renting construction vehicles to finding skilled drivers, we've streamlined the entire
+                process to save you time and money. Experience a smarter, safer way to power your projects.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/images/material1.jpg" alt="One-Stop Platform" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" style="object-fit: cover;" />
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Simplify Construction Vehicle Trading with Our Innovative Marketplace
+            </h2>
+            <p class="lead">Gone are the days of endless searching and negotiation. Our platform provides an easy-to-use
+                interface where buyers, sellers, and renters of construction vehicles come together. With advanced
+                filters and smart matching technology, finding the right equipment or service has never been easier.
+                Take your construction business to new heights with a few simple clicks.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="/images/material2.jpg" alt="One-Stop Platform" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" style="object-fit: cover;" />
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Empowering Contractors with the Tools They Need</h2>
+            <p class="lead">Finding the right tools and services for construction projects can be daunting. That's why
+                we've built a platform tailored specifically for the industry. Whether it's renting heavy machinery,
+                buying parts, or hiring experienced drivers, we've got you covered. Join thousands of satisfied users
+                and make your construction needs hassle-free.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/images/material3.jpg" alt="One-Stop Platform" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" style="object-fit: cover;" />
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->

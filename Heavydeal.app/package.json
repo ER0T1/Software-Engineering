@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "express-sanitizer": "^1.0.6",
+    "express-session": "^1.18.1",
+    "hjs": "^0.0.6",
+    "mysql2": "^3.11.5"
+  },
+  "scripts": {
+    "prestart": "cd /app && npm install && npm audit fix --force && npm install -g nodemon",
+    "start": "nodemon -L app.js"
+  }
+}

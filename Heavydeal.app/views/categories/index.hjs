@@ -1,0 +1,27 @@
+<div class="container">
+    <h2 class="text-center my-3"> Categories </h2>
+    <table class="table table-bordered table-hover table-sm align-middle">
+        <thead class="table-secondary">
+            <tr>
+                <th class="text-center" style="width: 25%;"> ID </th>
+                <th class="text-center" style="width: 75%;"> Category </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#data}}
+            {{> row}}
+            {{/data}}
+            <tr>
+                <td colspan='2' class="text-center">
+                    <form hx-post="/categories" hx-target="closest tr" hx-swap="beforebegin">
+                        <input type="text" name="description" placeholder="New Category" required>
+                        <button class='btn btn-success'>
+                            <i class="bi bi-plus-circle-fill"></i>
+                            Add
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
